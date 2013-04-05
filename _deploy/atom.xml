@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[My Octopress Blog]]></title>
+  <link href="http://wcdolphin.github.com/atom.xml" rel="self"/>
+  <link href="http://wcdolphin.github.com/"/>
+  <updated>2013-04-05T13:57:07-04:00</updated>
+  <id>http://wcdolphin.github.com/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    <email><![CDATA[wcdolphin@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Kony 2012]]></title>
+    <link href="http://wcdolphin.github.com/blog/2013/04/05/kony-2012/"/>
+    <updated>2013-04-05T01:10:00-04:00</updated>
+    <id>http://wcdolphin.github.com/blog/2013/04/05/kony-2012</id>
+    <content type="html"><![CDATA[<p>By now, I assume many of your have heard about <a href="http://www.kony2012.com/">Kony 2012</a> and have likely seen the exceptionally well made video, on YouTube.</p>
+
+<p>After watching the viral video, I found myself motivated to &#8220;make a difference,&#8221; but I paused and asked myself what kind of difference, and how? Why is it that this video was so appealing to me, why was it so profoundly motivating and so quickly gaining momentum? And finally, what was this organization actually striving to do?</p>
+
+<p>The first question is on the surface, very easily answered: the movie appealed to my sentiments. But many things appeal to my sentiments, many movements are aligned with my concept of morality, why this one? The answer, I quickly found, is that this campaign is exceptionally well marketed. This video has a number of high profile musical tracks, has been well promoted and is simply put, a work of art.
+While such works of art are incredible at raising awareness, I began to question what it is that this group actually does.</p>
+
+<p>After some quick research, I found a number of sites that have done real research into the group, and have found some things that I believe should be significant in influencing the public&#8217;s opinion of this emotional, well intended campaign.</p>
+
+<p>I first found a picture of the founders of Kony 2012 posing with weapons, with what appear to be members of the Sudan People’s Liberation Army:</p>
+
+<p><img src="http://3.bp.blogspot.com/-OrFcFmeall0/T1eMkRdc7JI/AAAAAAAABqI/C6kzyqBBSVI/s1600/KONY+2012+Founders.JPG" title="Kony 2012 founders posing... with an RPG" alt="Kony founders posing with weapons" /></p>
+
+<p>I then decided to investigate how this organization used their funds; finding an audit in 2011 by Considine Considine.  Last year, the organization spent $8,676,614. Only some 30% went to their charity, &#8216;Direct Services&#8217;.  More than $1 million was spent on salaries and compensation, with &#8216;Production Costs&#8217; and &#8216;Travel&#8217; constituting almost $2 million (see page 7). These figures are, to say the least, less than spectacular, with Charity Navigator awarding them two out of four stars for transparency( Charity Navigator).</p>
+
+<p>Am I saying that this organization is bad  or wrong? No, but what I am saying is simply this: think twice before buying posters, bracelets and cross posting material from Kony 2012, make sure that not only does their cause interest you, but also ensure that what they do aligns with what you believe.</p>
+
+<p>Read more: http://visiblechildren.tumblr.com.nyud.net/</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Hello world]]></title>
+    <link href="http://wcdolphin.github.com/blog/2013/04/04/hello-world/"/>
+    <updated>2013-04-04T22:04:00-04:00</updated>
+    <id>http://wcdolphin.github.com/blog/2013/04/04/hello-world</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+</feed>
