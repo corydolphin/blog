@@ -56,7 +56,7 @@ module Jekyll
           end
         end
         source = parts.join('/')
-        source << '/&hellip;' unless source == @source
+        source << '/...;' unless source == @source
       end
       if !@source.nil?
         cite = " <cite><a href='#{@source}'>#{(@title || source)}</a></cite>"

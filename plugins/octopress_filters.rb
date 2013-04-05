@@ -88,7 +88,7 @@ module OctopressLiquidFilters
   # - Uses typographically correct ellipsis (…) insted of '...'
   def truncate(input, length)
     if input.length > length && input[0..(length-1)] =~ /(.+)\b.+$/im
-      $1.strip + ' &hellip;'
+      $1.strip + ' ...;'
     else
       input
     end
@@ -99,7 +99,7 @@ module OctopressLiquidFilters
   def truncatewords(input, length)
     truncate = input.split(' ')
     if truncate.length > length
-      truncate[0..length-1].join(' ').strip + ' &hellip;'
+      truncate[0..length-1].join(' ').strip + ' ...;'
     else
       input
     end

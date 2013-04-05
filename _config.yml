@@ -2,7 +2,7 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://www.corydolphin.com/
+url: http://wcdolphin.github.com
 title: My Octopress Blog
 subtitle: A blogging framework for hackers.
 author: Your Name
@@ -19,14 +19,14 @@ date_format: "ordinal"
 subscribe_rss: /atom.xml
 subscribe_email:
 # RSS feeds can list your email address if you like
-email:
+email: wcdolphin@gmail.com
 
 # ----------------------- #
 #    Jekyll & Plugins     #
 # ----------------------- #
 
 # If publishing to a subdirectory as in http://site.com/project set 'root: /project'
-root: /blog
+root: /
 permalink: /blog/:year/:month/:day/:title/
 source: source
 destination: public
@@ -64,7 +64,7 @@ github_show_profile_link: true
 github_skip_forks: true
 
 # Twitter
-twitter_user:
+twitter_user: wcdolphin
 twitter_tweet_button: true
 
 # Google +1
@@ -92,4 +92,4 @@ disqus_show_comment_count: false
 google_analytics_tracking_id:
 
 # Facebook Like
-facebook_like: false
+facebook_like: true
