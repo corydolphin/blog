@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Kony 2012"
-date: 2013-04-05 01:10
+title: "Kony 2012, why you should think twice before buying"
+date: 2012-03-05 01:9
 comments: true
 categories: 
 ---
@@ -17,9 +17,7 @@ After some quick research, I found a number of sites that have done real researc
 
 I first found a picture of the founders of Kony 2012 posing with weapons, with what appear to be members of the Sudan People’s Liberation Army:
 
-
-![Kony founders posing with weapons](http://3.bp.blogspot.com/-OrFcFmeall0/T1eMkRdc7JI/AAAAAAAABqI/C6kzyqBBSVI/s1600/KONY+2012+Founders.JPG "Kony 2012 founders posing... with an RPG")
-
+{% img center http://3.bp.blogspot.com/-OrFcFmeall0/T1eMkRdc7JI/AAAAAAAABqI/C6kzyqBBSVI/s1600/KONY+2012+Founders.JPG 400 500 "Kony 2012 founders posing... with an RPG" %}
 
 I then decided to investigate how this organization used their funds; finding an audit in 2011 by Considine Considine.  Last year, the organization spent $8,676,614. Only some 30% went to their charity, 'Direct Services'.  More than $1 million was spent on salaries and compensation, with 'Production Costs' and 'Travel' constituting almost $2 million (see page 7). These figures are, to say the least, less than spectacular, with Charity Navigator awarding them two out of four stars for transparency( Charity Navigator).
 
