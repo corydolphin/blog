@@ -4,7 +4,7 @@
   <title><![CDATA[Cory Dolphin]]></title>
   <link href="http://wcdolphin.github.com/atom.xml" rel="self"/>
   <link href="http://wcdolphin.github.com/"/>
-  <updated>2013-04-08T15:58:21-04:00</updated>
+  <updated>2013-04-08T17:14:36-04:00</updated>
   <id>http://wcdolphin.github.com/</id>
   <author>
     <name><![CDATA[Cory Dolphin]]></name>
@@ -12,6 +12,31 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Dealing with MATLAb default fonts]]></title>
+    <link href="http://wcdolphin.github.com/blog/2013/04/08/dealing-with-matlab-default-fonts/"/>
+    <updated>2013-04-08T17:02:00-04:00</updated>
+    <id>http://wcdolphin.github.com/blog/2013/04/08/dealing-with-matlab-default-fonts</id>
+    <content type="html"><![CDATA[<p>I have recently been working heavily with MATLAB for an introduction to Microeletronic Circuits course at Olin College, where we explore the properties and behavior of transistors. The class has a significant lab component, which means I am preparing a large number of different figures using MATLAB. In the process, I have found a number of pain points:
+<em>The MATLAB default fonts are far too small to be legible when embedded in a LaTeX document.
+</em>When calling <code>saveas</code> on a figure, the image produced is the same size as whatever the frame of the current figure is.</p>
+
+<figure class='code'><figcaption><span>Getting meta with Matlab -doplot.m </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">function</span> <span class="nf">doplot</span><span class="p">(</span><span class="n">path_to_mfile</span><span class="p">,</span><span class="n">figure_folder_path</span><span class="p">,</span><span class="n">figure_name</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">newfigure</span><span class="p">();</span>
+</span><span class='line'>    <span class="n">run</span><span class="p">(</span><span class="n">path_to_mfile</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">saveformatfig</span><span class="p">(</span><span class="n">figure_folder_path</span><span class="p">,</span><span class="n">figure_name</span><span class="p">);</span>
+</span><span class='line'><span class="n">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[The Gender and Brogramming problem needs to be reframed.]]></title>

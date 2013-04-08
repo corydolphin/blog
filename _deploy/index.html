@@ -7,7 +7,7 @@
 	<meta name="author" content="Cory Dolphin">
 
 	
-	<meta name="description" content="Apr 8th, 2012 The Gender and Brogramming Problem Needs to Be Reframed. There are gender related issues in the software industry, in startup ...;">
+	<meta name="description" content="Apr 8th, 2013 Dealing With MATLAb Default Fonts I have recently been working heavily with MATLAB for an introduction to Microeletronic Circuits ...;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +78,53 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-08T17:02:00-04:00" data-updated="true" itemprop="datePublished">Apr 8<span>th</span>, 2013</time></div>
+		<div class="tags">
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2013/04/08/dealing-with-matlab-default-fonts/" itemprop="url">Dealing With MATLAb Default Fonts</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>I have recently been working heavily with MATLAB for an introduction to Microeletronic Circuits course at Olin College, where we explore the properties and behavior of transistors. The class has a significant lab component, which means I am preparing a large number of different figures using MATLAB. In the process, I have found a number of pain points:
+<em>The MATLAB default fonts are far too small to be legible when embedded in a LaTeX document.
+</em>When calling <code>saveas</code> on a figure, the image produced is the same size as whatever the frame of the current figure is.</p>
+
+<figure class='code'><figcaption><span>Getting meta with Matlab -doplot.m </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">function</span> <span class="nf">doplot</span><span class="p">(</span><span class="n">path_to_mfile</span><span class="p">,</span><span class="n">figure_folder_path</span><span class="p">,</span><span class="n">figure_name</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">newfigure</span><span class="p">();</span>
+</span><span class='line'>    <span class="n">run</span><span class="p">(</span><span class="n">path_to_mfile</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">saveformatfig</span><span class="p">(</span><span class="n">figure_folder_path</span><span class="p">,</span><span class="n">figure_name</span><span class="p">);</span>
+</span><span class='line'><span class="n">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
