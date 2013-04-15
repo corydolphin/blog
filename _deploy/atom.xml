@@ -4,7 +4,7 @@
   <title><![CDATA[Cory Dolphin]]></title>
   <link href="http://wcdolphin.github.com/atom.xml" rel="self"/>
   <link href="http://wcdolphin.github.com/"/>
-  <updated>2013-04-08T17:14:36-04:00</updated>
+  <updated>2013-04-14T21:22:30-04:00</updated>
   <id>http://wcdolphin.github.com/</id>
   <author>
     <name><![CDATA[Cory Dolphin]]></name>
@@ -12,6 +12,86 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Converting Mailman Archives to .mbox]]></title>
+    <link href="http://wcdolphin.github.com/blog/2013/04/14/converting-mailman-archives-to-mbox/"/>
+    <updated>2013-04-14T21:06:00-04:00</updated>
+    <id>http://wcdolphin.github.com/blog/2013/04/14/converting-mailman-archives-to-mbox</id>
+    <content type="html"><![CDATA[<p>Mailman is perhaps one of the most popular mailing lists in the world, yet searching and dealing with archives is absolutely hideous. Mailman stores every email sent and received in a .mbox file internally, but for most mailing lists, this is not accessible, and users must access archives either by vieiwing individual emails in HTML, or else downloading the tar-zipped archives for each month, which are stored in a weird format which is not documented.</p>
+
+<p>For a recent project, I wanted to make a Mailman list&#8217;s archive searchable, as it contained a great knowledgebase. While many lists are public, these contained potentially private, sensitive information about my university, thus it is not possible to simply use Google to index and search for us.</p>
+
+<p>After a weekend of reverse engineering a number of different email formats that Mailman seems to store archives as, we now have a workin Mailman archive parser, which can be used easily, creatively named <a href="https://github.com/wcdolphin/mailman-downloader">mailman-downloader</a>.
+The script downloads and decodes the archives, searching and replacing email mimetypes which Mailman scrubs, inserting mimetype boundaries and truncating these boundaries as they overflow. Author&#8217;s email addresses are reformed from the obfuscated &#8220;foo   at   bar  dot com&#8221; form.</p>
+
+<p>The heart of the decoder:</p>
+
+<figure class='code'><figcaption><span>decode.py </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+</pre></td><td class='code'><pre><code class='py'><span class='line'>        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">mboxFileName</span><span class="p">,</span><span class="s">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outMBox</span><span class="p">:</span>
+</span><span class='line'>            <span class="n">resp</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>  <span class="c"># get response object</span>
+</span><span class='line'>            <span class="n">lines</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>  <span class="c"># we actually need the full file, must buffer into memory. </span>
+</span><span class='line'>            <span class="n">lineNum</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>            <span class="k">while</span> <span class="n">lineNum</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">lines</span><span class="p">):</span>
+</span><span class='line'>                <span class="n">line</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="n">lineNum</span><span class="p">]</span>
+</span><span class='line'>                <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&quot;From &quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="c">#There are multiple From fields</span>
+</span><span class='line'>                    <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&quot; at &quot;</span><span class="p">,</span> <span class="s">&quot;@&quot;</span><span class="p">)</span>
+</span><span class='line'>                <span class="k">elif</span> <span class="n">line</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&quot;From: &quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="c">#There are multiple From fields</span>
+</span><span class='line'>                    <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&quot; at &quot;</span><span class="p">,</span> <span class="s">&quot;@&quot;</span><span class="p">)</span>
+</span><span class='line'>                <span class="k">elif</span> <span class="n">line</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&quot;Message-ID: &quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span class='line'>                    <span class="n">messageid_stripped</span> <span class="o">=</span> <span class="n">line</span><span class="p">[</span><span class="n">line</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&#39;&lt;&#39;</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">line</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s">&#39;&gt;&#39;</span><span class="p">)]</span>
+</span><span class='line'>                    <span class="n">messageid_stripped</span> <span class="o">=</span> <span class="n">messageid_stripped</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;@&#39;</span><span class="p">,</span><span class="s">&#39;&#39;</span><span class="p">)</span>
+</span><span class='line'>                    <span class="n">messageid_stripped</span> <span class="o">=</span> <span class="n">messageid_stripped</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;.&#39;</span><span class="p">,</span><span class="s">&#39;&#39;</span><span class="p">)</span>
+</span><span class='line'>                    <span class="n">messageid_stripped</span> <span class="o">=</span> <span class="n">messageid_stripped</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">55</span><span class="p">]</span>
+</span><span class='line'>                    <span class="k">if</span> <span class="n">lineNum</span> <span class="o">+</span><span class="mi">2</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span> <span class="ow">and</span> <span class="n">lines</span><span class="p">[</span><span class="n">lineNum</span><span class="o">+</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&#39;--&#39;</span><span class="p">)</span> <span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+</span><span class='line'>                        <span class="n">boundary</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="n">lineNum</span><span class="o">+</span><span class="mi">2</span><span class="p">][</span><span class="mi">2</span><span class="p">:]</span> <span class="c">#readahead and find the</span>
+</span><span class='line'>                        <span class="n">line</span> <span class="o">=</span> <span class="n">line</span> <span class="o">+</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span> <span class="o">+</span> <span class="s">&#39;Content-Type: multipart/mixed;boundary=&quot;</span><span class="si">%s</span><span class="s">&quot;&#39;</span> <span class="o">%</span> <span class="n">boundary</span>
+</span><span class='line'>                    <span class="k">else</span><span class="p">:</span>
+</span><span class='line'>                        <span class="k">pass</span>
+</span><span class='line'>                <span class="k">elif</span> <span class="n">line</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&quot;-------------- next part --------------&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c"># some messages have this crap</span>
+</span><span class='line'>                    <span class="n">line</span> <span class="o">=</span> <span class="bp">None</span>
+</span><span class='line'>                <span class="k">elif</span> <span class="n">line</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&quot;Skipped content of type&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c"># some messages have this crap</span>
+</span><span class='line'>                    <span class="n">line</span> <span class="o">=</span> <span class="bp">None</span>
+</span><span class='line'>                <span class="k">if</span> <span class="n">line</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span>
+</span><span class='line'>                    <span class="n">outMBox</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span> <span class="o">+</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+</span><span class='line'>                <span class="n">lineNum</span> <span class="o">+=</span><span class="mi">1</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">overWrote</span><span class="p">,</span> <span class="bp">False</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>In the repository, a simple script to upload the downloaded archives to gmail is included, fully automating the process of creating a gmail-based full-text archive searcher, more to come on that soon.</p>
+
+<p>Any questions, comments? Please file an issue and or submit a pull request.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Dealing with MATLAb default fonts]]></title>
