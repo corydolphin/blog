@@ -48,6 +48,7 @@ module Jekyll
   # Any files to exclude from being included in the sitemap.xml
   EXCLUDED_FILES = ["atom.xml"]
 
+  CUSTOM_URLS   = ["http://www.corydolphin.com/heroku-bench/"]
   # Any files that include posts, so that when a new post is added, the last
   # modified date of these pages should take that into account
   PAGES_INCLUDE_POSTS = ["index.html"]
@@ -119,6 +120,14 @@ module Jekyll
 
       @last_modified_post_date = fill_posts(site, urlset)
       fill_pages(site, urlset)
+
+      CUSTOM_URLS.each do |link|
+        url = REXML::Element.new "url"
+        loc = REXML::Element.new "loc"
+        loc.text = link
+        url.add_element(loc)
+        urlset.add_element(url)
+      end
 
       sitemap.add_element(urlset)
 

@@ -2,7 +2,7 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://wcdolphin.github.com
+url: http://www.corydolphin.com
 title: Cory Dolphin
 subtitle: My personal ramblings.
 author: Cory Dolphin
@@ -77,11 +77,11 @@ googleplus_user: 118324243428277511047
 googleplus_hidden: false
 
 # Pinboard
-pinboard_user: 
+pinboard_user:
 pinboard_count: 3
 
 # Delicious
-delicious_user: 
+delicious_user:
 delicious_count: 3
 
 # Disqus Comments
@@ -93,3 +93,5 @@ google_analytics_tracking_id: UA-39970641-1
 
 # Facebook Like
 facebook_like: true
+
+include: ["googleba0d9d4e9096a2cc.html"]
